@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Microsoft YaHei", "微软雅黑", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", "Fira Code", monospace;
+  
+  --color-designer-light: #ffffff;
+  --color-designer-medium: #18181b;
+  --color-designer-dark: #000000;
+  --color-designer-blue: #000000;
+  --color-designer-navy: #000000;
+  --color-designer-slate: #52525b;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    background-color: #ffffff;
+    color: #000000;
+    overflow-x: hidden;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #000000;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Base structural styles for customized shapes resembling 3D designs */
+.geometric-shadow {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+}
+
+.frosted-glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark-frosted-glass {
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Scrollbar aesthetic optimization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Venetian blind slit item helpers */
+.blind-slit-vertical {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Selection aesthetics */
+::selection {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #ffffff;
+}
+

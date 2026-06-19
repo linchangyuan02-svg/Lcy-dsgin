@@ -1,0 +1,180 @@
+:root {
+  --border-color: #2c2c2e;
+  --background-dark: #121214;
+  --white: #ffffff;
+}
+
+.card-grid {
+  display: grid;
+  gap: 1.5rem;
+  width: 100%;
+  grid-auto-flow: row dense;
+}
+
+.magic-bento-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  aspect-ratio: 4/3;
+  min-height: 250px;
+  width: 100%;
+  max-width: 100%;
+  padding: 1.5rem;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  background: var(--background-dark);
+  font-weight: 300;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --glow-radius: 200px;
+}
+
+.magic-bento-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.magic-bento-card__header,
+.magic-bento-card__content {
+  display: flex;
+  position: relative;
+  z-index: 10;
+}
+
+.magic-bento-card__header {
+  gap: 0.75em;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.magic-bento-card__content {
+  flex-direction: column;
+}
+
+.magic-bento-card__title {
+  font-weight: 800;
+  margin: 0;
+}
+
+.magic-bento-card__description {
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+.magic-bento-card--text-autohide .magic-bento-card__title,
+.magic-bento-card--text-autohide .magic-bento-card__description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 599px) {
+  .card-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .magic-bento-card {
+    min-height: 220px;
+    aspect-ratio: 16/10;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 270px;
+  }
+
+  .magic-bento-card {
+    aspect-ratio: auto;
+    height: 100%;
+  }
+
+  /* Ideal packed bento columns layout for 8 cards with zero holes */
+  .magic-bento-card:nth-child(1) {
+    grid-column: span 2;
+  }
+  .magic-bento-card:nth-child(4) {
+    grid-column: span 2;
+  }
+  .magic-bento-card:nth-child(6) {
+    grid-column: span 2;
+  }
+  .magic-bento-card:nth-child(7) {
+    grid-column: span 2;
+  }
+}
+
+/* Border glow effect */
+.magic-bento-card--border-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  background: radial-gradient(
+    var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+    rgba(13, 148, 136, calc(var(--glow-intensity) * 0.8)) 0%,
+    rgba(13, 148, 136, calc(var(--glow-intensity) * 0.3)) 30%,
+    transparent 60%
+  );
+  border-radius: inherit;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.magic-bento-card--border-glow:hover::after {
+  opacity: 1;
+}
+
+.particle-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.particle::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: rgba(13, 148, 136, 0.15);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Global spotlight styles */
+.global-spotlight {
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+  z-index: 100 !important;
+  pointer-events: none;
+}
+
+.bento-section {
+  position: relative;
+  user-select: none;
+}

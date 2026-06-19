@@ -1,0 +1,6 @@
+{
+  "name": "3D设计个人作品集网站",
+  "description": "一个极简高级、充满动效的3D设计、包装设计及AI原生作品集展示平台。具有百叶窗封面、滚动背景交替、自动流动、圆盘交互、排版悬停暂停和灯箱大图功能。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
